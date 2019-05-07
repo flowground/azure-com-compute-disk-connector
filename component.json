@@ -1,0 +1,322 @@
+{
+    "title": "DiskResourceProviderClient",
+    "description": "The Disk Resource Provider Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/compute-disk/2018-06-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Disks_List": {
+            "main": "./lib/actions/Disks_List.js",
+            "title": "Lists all the disks under a subscription.",
+            "description": "Lists all the disks under a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_List": {
+            "main": "./lib/actions/Snapshots_List.js",
+            "title": "Lists snapshots under a subscription.",
+            "description": "Lists snapshots under a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_ListByResourceGroup": {
+            "main": "./lib/actions/Disks_ListByResourceGroup.js",
+            "title": "Lists all the disks under a resource group.",
+            "description": "Lists all the disks under a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Delete": {
+            "main": "./lib/actions/Disks_Delete.js",
+            "title": "Deletes a disk.",
+            "description": "Deletes a disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Get": {
+            "main": "./lib/actions/Disks_Get.js",
+            "title": "Gets information about a disk.",
+            "description": "Gets information about a disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Update": {
+            "main": "./lib/actions/Disks_Update.js",
+            "title": "Updates (patches) a disk.",
+            "description": "Updates (patches) a disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_CreateOrUpdate": {
+            "main": "./lib/actions/Disks_CreateOrUpdate.js",
+            "title": "Creates or updates a disk.",
+            "description": "Creates or updates a disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_GrantAccess": {
+            "main": "./lib/actions/Disks_GrantAccess.js",
+            "title": "Grants access to a disk.",
+            "description": "Grants access to a disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_GrantAccess.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_RevokeAccess": {
+            "main": "./lib/actions/Disks_RevokeAccess.js",
+            "title": "Revokes access to a disk.",
+            "description": "Revokes access to a disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_RevokeAccess.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_ListByResourceGroup": {
+            "main": "./lib/actions/Snapshots_ListByResourceGroup.js",
+            "title": "Lists snapshots under a resource group.",
+            "description": "Lists snapshots under a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Delete": {
+            "main": "./lib/actions/Snapshots_Delete.js",
+            "title": "Deletes a snapshot.",
+            "description": "Deletes a snapshot.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Get": {
+            "main": "./lib/actions/Snapshots_Get.js",
+            "title": "Gets information about a snapshot.",
+            "description": "Gets information about a snapshot.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Update": {
+            "main": "./lib/actions/Snapshots_Update.js",
+            "title": "Updates (patches) a snapshot.",
+            "description": "Updates (patches) a snapshot.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_CreateOrUpdate": {
+            "main": "./lib/actions/Snapshots_CreateOrUpdate.js",
+            "title": "Creates or updates a snapshot.",
+            "description": "Creates or updates a snapshot.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_GrantAccess": {
+            "main": "./lib/actions/Snapshots_GrantAccess.js",
+            "title": "Grants access to a snapshot.",
+            "description": "Grants access to a snapshot.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_GrantAccess.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_RevokeAccess": {
+            "main": "./lib/actions/Snapshots_RevokeAccess.js",
+            "title": "Revokes access to a snapshot.",
+            "description": "Revokes access to a snapshot.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_RevokeAccess.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
